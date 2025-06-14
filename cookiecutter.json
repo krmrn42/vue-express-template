@@ -1,0 +1,22 @@
+{
+  "project_name": "my-app",
+  "project_description": "Full-stack monorepo with Vue 3, Express TypeScript, and Terraform",
+  "author_name": "Your Name",
+  "author_email": "your.email@example.com",
+  "service_name": "hello-service",
+  "service_port": "3000",
+  "gcp_project_id": "my-gcp-project",
+  "gcp_region": "us-central1",
+  "include_terraform": ["yes", "no"],
+  "include_github_actions": ["yes", "no"],
+  "run_initial_setup": ["yes", "no"],
+  "_extensions": ["jinja2_time.TimeExtension"],
+  "_copy_without_render": [
+    "*.ico",
+    "*.png", 
+    "*.jpg",
+    "*.jpeg",
+    "*.gif",
+    "*.svg"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "{{cookiecutter.project_name}}",
+  "version": "1.0.0",
+  "description": "{{cookiecutter.project_description}}",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test:unit",
+    "test:unit": "pnpm -r run test:unit",
+    "type-check": "pnpm -r run type-check",
+    "lint": "pnpm -r run lint",
+    "format": "pnpm -r run format",
+    "prepare": "husky",
+    "dev": "pnpm -r --parallel run dev"
+  },
+  "keywords": ["monorepo", "vue", "express", "typescript", "pnpm"],
+  "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "@vitest/eslint-plugin": "^1.1.0",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "sort-package-json": "^2.10.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@9.9.0"
+}

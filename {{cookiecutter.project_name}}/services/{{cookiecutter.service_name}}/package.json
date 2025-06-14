@@ -1,0 +1,36 @@
+{
+  "name": "{{cookiecutter.service_name}}",
+  "version": "1.0.0",
+  "description": "Express TypeScript microservice",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "node dist/index.js",
+    "test:unit": "vitest run --config vitest.config.ts --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext .ts --config eslint.config.cjs",
+    "format": "prettier --write src/"
+  },
+  "keywords": ["express", "typescript", "microservice"],
+  "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.0",
+    "@types/supertest": "^6.0.2",
+    "@vitest/coverage-v8": "^2.0.5",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
