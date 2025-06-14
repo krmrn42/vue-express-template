@@ -23,13 +23,11 @@ jobs:
       with:
         version: 9
 
-{% raw -%}
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js {% raw -%}${{ matrix.node-version }}{%- endraw %}
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: {% raw -%}${{ matrix.node-version }}{%- endraw %}
         cache: 'pnpm'
-{%- endraw %}
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
@@ -61,8 +59,8 @@ jobs:
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
       with:
-        workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
-        service_account: ${{ secrets.GCP_SA_EMAIL }}
+        workload_identity_provider: {% raw -%}${{ secrets.WIF_PROVIDER }}{%- endraw %}
+        service_account: {% raw -%}${{ secrets.GCP_SA_EMAIL }}{%- endraw %}
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
@@ -73,10 +71,10 @@ jobs:
     - name: Build and push Docker image
       run: |
         cd services/{{cookiecutter.service_name}}
-        docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{cookiecutter.service_name}}:${{ github.sha }} .
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{cookiecutter.service_name}}:${{ github.sha }}
-        docker tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{cookiecutter.service_name}}:${{ github.sha }} gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{cookiecutter.service_name}}:latest
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{cookiecutter.service_name}}:latest
+        docker build -t gcr.io/{% raw -%}${{ secrets.GCP_PROJECT_ID }}{%- endraw %}/{{cookiecutter.service_name}}:{% raw -%}${{ github.sha }}{%- endraw %} .
+        docker push gcr.io/{% raw -%}${{ secrets.GCP_PROJECT_ID }}{%- endraw %}/{{cookiecutter.service_name}}:{% raw -%}${{ github.sha }}{%- endraw %}
+        docker tag gcr.io/{% raw -%}${{ secrets.GCP_PROJECT_ID }}{%- endraw %}/{{cookiecutter.service_name}}:{% raw -%}${{ github.sha }}{%- endraw %} gcr.io/{% raw -%}${{ secrets.GCP_PROJECT_ID }}{%- endraw %}/{{cookiecutter.service_name}}:latest
+        docker push gcr.io/{% raw -%}${{ secrets.GCP_PROJECT_ID }}{%- endraw %}/{{cookiecutter.service_name}}:latest
 
   deploy:
     needs: build-and-push
@@ -93,8 +91,8 @@ jobs:
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
       with:
-        workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
-        service_account: ${{ secrets.GCP_SA_EMAIL }}
+        workload_identity_provider: {% raw -%}${{ secrets.WIF_PROVIDER }}{%- endraw %}
+        service_account: {% raw -%}${{ secrets.GCP_SA_EMAIL }}{%- endraw %}
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
@@ -102,8 +100,8 @@ jobs:
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy {{cookiecutter.service_name}} \
-          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{cookiecutter.service_name}}:${{ github.sha }} \
-          --region ${{ secrets.CLOUD_RUN_REGION }} \
+          --image gcr.io/{% raw -%}${{ secrets.GCP_PROJECT_ID }}{%- endraw %}/{{cookiecutter.service_name}}:{% raw -%}${{ github.sha }}{%- endraw %} \
+          --region {% raw -%}${{ secrets.CLOUD_RUN_REGION }}{%- endraw %} \
           --platform managed \
           --allow-unauthenticated
 {% endif %}
