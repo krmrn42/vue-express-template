@@ -10,10 +10,9 @@
   "include_terraform": ["yes", "no"],
   "include_github_actions": ["yes", "no"],
   "run_initial_setup": ["yes", "no"],
-  "_extensions": ["jinja2_time.TimeExtension"],
   "_copy_without_render": [
     "*.ico",
-    "*.png", 
+    "*.png",
     "*.jpg",
     "*.jpeg",
     "*.gif",
