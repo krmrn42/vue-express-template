@@ -3,7 +3,7 @@
 ## 🚀 Quick Start
 
 ```bash
-pipx run cookiecutter gh:your-org/vue-express-template
+pipx run cookiecutter gh:krmrn42/vue-express-template
 ```
 
 Follow the prompts and you'll have a fully configured monorepo!
@@ -11,6 +11,7 @@ Follow the prompts and you'll have a fully configured monorepo!
 ## 📋 What This Template Creates
 
 ### Project Structure
+
 ```
 my-app/
 ├── apps/
@@ -49,15 +50,15 @@ my-app/
 
 ## 🛠️ Configuration Options
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `project_name` | Kebab-case project name | `awesome-saas` |
-| `service_name` | Backend service name | `api-service` |
-| `service_port` | Service port (1024-65535) | `8080` |
-| `gcp_project_id` | GCP project for deployment | `my-prod-project` |
-| `include_terraform` | Include infrastructure files | `yes/no` |
-| `include_github_actions` | Include CI/CD workflows | `yes/no` |
-| `run_initial_setup` | Auto-run setup commands | `yes/no` |
+| Variable                 | Description                  | Example           |
+| ------------------------ | ---------------------------- | ----------------- |
+| `project_name`           | Kebab-case project name      | `awesome-saas`    |
+| `service_name`           | Backend service name         | `api-service`     |
+| `service_port`           | Service port (1024-65535)    | `8080`            |
+| `gcp_project_id`         | GCP project for deployment   | `my-prod-project` |
+| `include_terraform`      | Include infrastructure files | `yes/no`          |
+| `include_github_actions` | Include CI/CD workflows      | `yes/no`          |
+| `run_initial_setup`      | Auto-run setup commands      | `yes/no`          |
 
 ## 📚 Technology Stack
 
@@ -97,7 +98,9 @@ pnpm format
 ## 🚀 Deployment
 
 ### GitHub Actions (if enabled)
+
 1. Set repository secrets:
+
    - `GCP_PROJECT_ID`
    - `CLOUD_RUN_REGION`
    - `GCP_SA_EMAIL`
@@ -109,6 +112,7 @@ pnpm format
    - Deployment to Cloud Run
 
 ### Manual Terraform (if enabled)
+
 ```bash
 cd terraform
 terraform init
@@ -119,17 +123,21 @@ terraform apply
 ## 🔧 Customization
 
 ### Adding New Services
+
 1. Create new service in `services/` directory
 2. Follow the same structure as the generated service
 3. Add to workspace scripts in root `package.json`
 
 ### Adding New Apps
+
 1. Create new app in `apps/` directory
 2. Add to pnpm workspace
 3. Update root scripts as needed
 
 ### Environment Variables
+
 Create `.env` files in each service:
+
 ```bash
 # services/api-service/.env
 PORT=8080
@@ -152,7 +160,9 @@ NODE_ENV=development
 ## 🆘 Troubleshooting
 
 ### Vue App Creation Fails
+
 If the interactive Vue creation fails during setup:
+
 ```bash
 cd apps
 pnpm create vue@latest web
@@ -160,13 +170,17 @@ pnpm create vue@latest web
 ```
 
 ### Permission Issues
+
 Make sure hooks are executable:
+
 ```bash
 chmod +x .husky/pre-commit
 ```
 
 ### Dependency Issues
+
 Clear and reinstall:
+
 ```bash
 rm -rf node_modules */node_modules
 rm pnpm-lock.yaml

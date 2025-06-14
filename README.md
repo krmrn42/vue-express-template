@@ -17,7 +17,7 @@ A comprehensive Cookiecutter template for creating production-ready fullstack mo
 Before using this template, ensure you have:
 
 - **Node.js** >= 20.0.0
-- **pnpm** >= 8.0.0  
+- **pnpm** >= 8.0.0
 - **Git**
 - **Python** (for Cookiecutter)
 
@@ -27,7 +27,7 @@ Before using this template, ensure you have:
 
 ```bash
 # Install and run cookiecutter in one command
-pipx run cookiecutter gh:your-org/vue-express-template
+pipx run cookiecutter gh:krmrn42/vue-express-template
 ```
 
 ### Option 2: Using pip/venv
@@ -40,16 +40,16 @@ source venv/bin/activate  # Linux/Mac
 
 # Install and run cookiecutter
 pip install cookiecutter
-cookiecutter gh:your-org/vue-express-template
+cookiecutter gh:krmrn42/vue-express-template
 ```
 
 ### Option 3: Using Docker
 
 ```bash
 docker run -it --rm -v $(pwd):/workspace python:3.11 bash -c "
-  pip install cookiecutter && 
-  cd /workspace && 
-  cookiecutter gh:your-org/vue-express-template
+  pip install cookiecutter &&
+  cd /workspace &&
+  cookiecutter gh:krmrn42/vue-express-template
 "
 ```
 
@@ -57,19 +57,19 @@ docker run -it --rm -v $(pwd):/workspace python:3.11 bash -c "
 
 You'll be prompted for the following configuration:
 
-| Variable | Description | Default | Example |
-|----------|-------------|---------|---------|
-| `project_name` | Name of your project | `my-app` | `awesome-saas` |
-| `project_description` | Brief description | `Full-stack monorepo...` | `My awesome SaaS platform` |
-| `author_name` | Your name | `Your Name` | `John Doe` |
-| `author_email` | Your email | `your.email@example.com` | `john@example.com` |
-| `service_name` | Backend service name | `hello-service` | `api-service` |
-| `service_port` | Service port | `3000` | `8080` |
-| `gcp_project_id` | GCP Project ID | `my-gcp-project` | `my-saas-prod` |
-| `gcp_region` | GCP Region | `us-central1` | `europe-west1` |
-| `include_terraform` | Include Terraform files | `yes` | `yes/no` |
-| `include_github_actions` | Include CI/CD workflows | `yes` | `yes/no` |
-| `run_initial_setup` | Auto-run setup commands | `yes` | `yes/no` |
+| Variable                 | Description             | Default                  | Example                    |
+| ------------------------ | ----------------------- | ------------------------ | -------------------------- |
+| `project_name`           | Name of your project    | `my-app`                 | `awesome-saas`             |
+| `project_description`    | Brief description       | `Full-stack monorepo...` | `My awesome SaaS platform` |
+| `author_name`            | Your name               | `Your Name`              | `John Doe`                 |
+| `author_email`           | Your email              | `your.email@example.com` | `john@example.com`         |
+| `service_name`           | Backend service name    | `hello-service`          | `api-service`              |
+| `service_port`           | Service port            | `3000`                   | `8080`                     |
+| `gcp_project_id`         | GCP Project ID          | `my-gcp-project`         | `my-saas-prod`             |
+| `gcp_region`             | GCP Region              | `us-central1`            | `europe-west1`             |
+| `include_terraform`      | Include Terraform files | `yes`                    | `yes/no`                   |
+| `include_github_actions` | Include CI/CD workflows | `yes`                    | `yes/no`                   |
+| `run_initial_setup`      | Auto-run setup commands | `yes`                    | `yes/no`                   |
 
 ## 🏗️ What Gets Created
 
@@ -101,7 +101,7 @@ When `run_initial_setup` is `yes` (default), the template will:
 2. **Install root dependencies** via `pnpm install`
 3. **Create Vue app interactively** - You'll be prompted to configure:
    - ✅ TypeScript: Yes (recommended)
-   - ✅ Vue Router: Yes (recommended)  
+   - ✅ Vue Router: Yes (recommended)
    - ✅ Pinia: Yes (recommended)
    - ✅ Vitest: Yes (recommended)
    - ✅ ESLint: Yes (recommended)
