@@ -113,6 +113,21 @@ When `run_initial_setup` is `yes` (default), the template will:
 
 ## 🚀 Next Steps After Generation
 
+Test:
+
+```bash
+pnpm -r install
+pnpm -r format
+pnpm -r build
+pnpm test
+pnpm lint
+git add .
+pnpm lint-staged
+git commit -m "initial commit"
+```
+
+Run:
+
 ```bash
 # Navigate to your project
 cd my-app
