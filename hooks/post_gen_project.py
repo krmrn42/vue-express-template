@@ -76,16 +76,6 @@ def install_root_dependencies():
 def create_vue_app():
     """Create Vue app following README.md: pnpm create vue@latest web"""
     print("🎨 Creating Vue.js application...")
-    print("📋 You will be prompted to configure the Vue app. Recommended choices:")
-    print("   ✅ TypeScript: Yes")
-    print("   ✅ JSX: No")
-    print("   ✅ Vue Router: Yes")
-    print("   ✅ Pinia: Yes")
-    print("   ✅ Vitest: Yes")
-    print("   ✅ End-to-End Testing: No (or Playwright if you prefer)")
-    print("   ✅ ESLint: Yes")
-    print("   ✅ Prettier: Yes")
-    print()
 
     apps_dir = Path('apps')
     apps_dir.mkdir(exist_ok=True)
@@ -119,28 +109,6 @@ def setup_vue_app():
     if not web_path.exists():
         print("❌ Vue app not found. Skipping Vue setup.")
         return False
-
-    # Add coverage to vitest config as per README.md
-    vitest_config = web_path / 'vitest.config.ts'
-    if vitest_config.exists():
-        content = vitest_config.read_text()
-        if 'coverage' not in content:
-            # Add coverage configuration
-            updated_content = content.replace(
-                'defineConfig({',
-                '''defineConfig({
-    test: {
-      environment: 'jsdom',
-      exclude: [...configDefaults.exclude, 'e2e/*'],
-      root: fileURLToPath(new URL('./', import.meta.url)),
-      coverage: {
-        provider: 'v8',
-        reporter: ['text', 'json', 'html']
-      }
-    },'''
-            )
-            vitest_config.write_text(updated_content)
-            print("✅ Added coverage configuration to vitest.config.ts")
 
     # Install web app dependencies
     run_command('pnpm install', 'Installing web app dependencies', cwd=web_path)
