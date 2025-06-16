@@ -39,6 +39,15 @@ module.exports = defineConfig([
         "warn",
         { argsIgnorePattern: "^_" },
       ],
+      "@typescript-eslint/restrict-template-expressions": [
+        "error",
+        {
+          allowBoolean: true,
+          allowNullish: true,
+          allowRegExp: true,
+          allowNumber: true,
+        },
+      ],
     },
   },
   {
